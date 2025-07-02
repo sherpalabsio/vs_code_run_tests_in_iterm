@@ -4,19 +4,19 @@ const sinon = require('sinon');
 
 const childProcess = require('child_process');
 const vscode = require('vscode');
-const iTerm2 = require('../src/iterm2');
+const iterm = require('../src/iterm');
 
 describe('extension', () => {
-  let execStub, iTerm2Stub;
+  let execStub, itermStub;
 
   beforeEach(() => {
     execStub = sinon.stub(childProcess, 'exec');
-    iTerm2Stub = sinon.stub(iTerm2, 'prepareScreen');
+    itermStub = sinon.stub(iterm, 'prepareScreen');
   });
 
   afterEach(() => {
     execStub.restore();
-    iTerm2Stub.restore();
+    itermStub.restore();
   });
 
   it('runs the correct command for a Ruby file', async () => {
@@ -29,7 +29,7 @@ describe('extension', () => {
     const position = new vscode.Position(2, 0);
     editor.selection = new vscode.Selection(position, position);
 
-    await vscode.commands.executeCommand('run-tests-in-iterm2.runAtCursor');
+    await vscode.commands.executeCommand('run-tests-in-iterm.runAtCursor');
 
     assert(execStub.calledOnce);
     const expectedCommand = `make test ${document.uri.fsPath}:3`;

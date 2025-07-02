@@ -1,5 +1,5 @@
 {
-  "runTestsInIterm2": {
+  "runTestsInIterm": {
     "testRunners": [
       {
         "suffix": ".test.js",

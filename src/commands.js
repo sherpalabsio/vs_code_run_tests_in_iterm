@@ -1,6 +1,6 @@
 const vscode = require('vscode');
 const { getExecutable } = require('./testRunnerHelper');
-const iTerm2 = require('./iterm2');
+const Iterm = require('./iterm');
 const path = require('path');
 
 function runAll() {
@@ -11,7 +11,7 @@ function runAll() {
   const executable = getExecutable(filePath, editor.document.languageId);
   const command = `${executable}`;
 
-  iTerm2.run(command);
+  Iterm.run(command);
 }
 
 function runCurrentFile() {
@@ -22,7 +22,7 @@ function runCurrentFile() {
   const executable = getExecutable(filePath, editor.document.languageId);
   const command = `${executable} ${filePath}`;
 
-  iTerm2.run(command);
+  Iterm.run(command);
 }
 
 function runAtCursor() {
@@ -35,7 +35,7 @@ function runAtCursor() {
   const executable = getExecutable(filePath, editor.document.languageId);
   const command = `${executable} ${fileAndLine}`;
 
-  iTerm2.run(command);
+  Iterm.run(command);
 }
 
 function getCurrentFilePath() {

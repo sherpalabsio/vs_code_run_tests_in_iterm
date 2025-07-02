@@ -3,7 +3,7 @@ const { describe, it, beforeEach, afterEach } = require('mocha');
 const sinon = require('sinon');
 
 const childProcess = require('child_process');
-const iTerm2 = require('../../src/iterm2');
+const iterm = require('../../src/iterm');
 
 describe('.isCurrentSessionBusy', () => {
   let execSyncStub, shellStub;
@@ -19,9 +19,9 @@ describe('.isCurrentSessionBusy', () => {
   });
 
   it('returns false when the current session is busy', async () => {
-    execSyncStub.onCall(0).returns('..sts-in-iterm2 (-zsh)');
+    execSyncStub.onCall(0).returns('..sts-in-iterm (-zsh)');
 
-    const result = iTerm2.isCurrentSessionBusy();
+    const result = iterm.isCurrentSessionBusy();
 
     assert(!result);
   });
@@ -29,7 +29,7 @@ describe('.isCurrentSessionBusy', () => {
   it('returns true when the current session is busy', async () => {
     execSyncStub.onCall(0).returns('bash (tail)');
 
-    const result = iTerm2.isCurrentSessionBusy();
+    const result = iterm.isCurrentSessionBusy();
 
     assert(result);
   });
@@ -39,9 +39,9 @@ describe('.prepareScreen', () => {
   let openNewTabStub, clearTheScreenStub, isCurrentSessionBusyStub;
 
   beforeEach(() => {
-    openNewTabStub = sinon.stub(iTerm2, 'openNewTab');
-    clearTheScreenStub = sinon.stub(iTerm2, 'clearTheScreen');
-    isCurrentSessionBusyStub = sinon.stub(iTerm2, 'isCurrentSessionBusy');
+    openNewTabStub = sinon.stub(iterm, 'openNewTab');
+    clearTheScreenStub = sinon.stub(iterm, 'clearTheScreen');
+    isCurrentSessionBusyStub = sinon.stub(iterm, 'isCurrentSessionBusy');
   });
 
   afterEach(() => {
@@ -53,7 +53,7 @@ describe('.prepareScreen', () => {
   it('opens a new tab when the current session is busy', async () => {
     isCurrentSessionBusyStub.onCall(0).returns(true);
 
-    iTerm2.prepareScreen();
+    iterm.prepareScreen();
 
     assert(openNewTabStub.calledOnce);
   });
@@ -61,7 +61,7 @@ describe('.prepareScreen', () => {
   it('clears the screen when the current session is not busy', async () => {
     isCurrentSessionBusyStub.onCall(0).returns(false);
 
-    iTerm2.prepareScreen();
+    iterm.prepareScreen();
 
     assert(clearTheScreenStub.calledOnce);
   });

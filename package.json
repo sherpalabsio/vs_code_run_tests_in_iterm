@@ -1,7 +1,7 @@
 {
-  "name": "run-tests-in-iterm2",
-  "displayName": "Run tests in iTerm2",
-  "description": "Run a single or multiple tests directly in iTerm2 with the press of a button.",
+  "name": "run-tests-in-iterm",
+  "displayName": "Run tests in iterm",
+  "description": "Run a single or multiple tests directly in iterm with the press of a button.",
   "publisher": "sherpalabsio",
   "version": "0.0.1",
   "author": {
@@ -9,13 +9,13 @@
   },
   "license": "MIT",
   "icon": "media/icon.png",
-  "homepage": "https://github.com/sherpalabsio/vs_code_run_tests_in_iterm2",
+  "homepage": "https://github.com/sherpalabsio/vs_code_run_tests_in_iterm",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sherpalabsio/vs_code_run_tests_in_iterm2"
+    "url": "https://github.com/sherpalabsio/vs_code_run_tests_in_iterm"
   },
   "bugs": {
-    "url": "https://github.com/sherpalabsio/vs_code_run_tests_in_iterm2/issues"
+    "url": "https://github.com/sherpalabsio/vs_code_run_tests_in_iterm/issues"
   },
   "engines": {
     "vscode": "^1.97.0"
@@ -26,7 +26,7 @@
   "keywords": [
     "run test",
     "iTerm",
-    "iTerm2",
+    "iterm",
     "terminal",
     "run test in iterm",
     "test runner",
@@ -41,47 +41,47 @@
   "contributes": {
     "commands": [
       {
-        "command": "run-tests-in-iterm2.runAll",
-        "title": "iTerm2: Run all tests"
+        "command": "run-tests-in-iterm.runAll",
+        "title": "iterm: Run all tests"
       },
       {
-        "command": "run-tests-in-iterm2.runCurrentFile",
-        "title": "iTerm2: Run current test file"
+        "command": "run-tests-in-iterm.runCurrentFile",
+        "title": "iterm: Run current test file"
       },
       {
-        "command": "run-tests-in-iterm2.runAtCursor",
-        "title": "iTerm2: Run test at cursor"
+        "command": "run-tests-in-iterm.runAtCursor",
+        "title": "iterm: Run test at cursor"
       }
     ],
     "configuration": {
-      "title": "Run Tests in iTerm2",
+      "title": "Run Tests in iterm",
       "properties": {
-        "runTestsInIterm2.bringIterm2ForwardOnExecution": {
+        "runTestsInIterm.bringItermForwardOnExecution": {
           "default": true,
-          "description": "Bring iTerm2 to the front when a test starts running.",
+          "description": "Bring iterm to the front when a test starts running.",
           "type": "boolean"
         },
-        "runTestsInIterm2.openNewTab": {
+        "runTestsInIterm.openNewTab": {
           "default": true,
-          "markdownDescription": "Run the tests in a new iTerm2 tab when the current iTerm2 session is running something e.g. an app server. This is not supported for tmux so make sure to set the `iUseTmux` correctly to avoid new tabs being constantly opened.",
+          "markdownDescription": "Run the tests in a new iterm tab when the current iterm session is running something e.g. an app server. This is not supported for tmux so make sure to set the `iUseTmux` correctly to avoid new tabs being constantly opened.",
           "type": "boolean"
         },
-        "runTestsInIterm2.clearTheScreen": {
+        "runTestsInIterm.clearTheScreen": {
           "default": true,
           "markdownDescription": "Clear the screen before running the tests. This also removes any text typed into the prompt.",
           "type": "boolean"
         },
-        "runTestsInIterm2.iUseTmux": {
+        "runTestsInIterm.iUseTmux": {
           "default": false,
           "markdownDescription": "Some features are not supported in tmux, and some need to be adjusted to work with tmux. Set this to `true` to avoid weird behavior in tmux.",
           "type": "boolean"
         },
-        "runTestsInIterm2.defaultTestRunner": {
+        "runTestsInIterm.defaultTestRunner": {
           "default": "make test",
           "markdownDescription": "The default command to run when no specific command is found for the current file. This is also used to run all tests.",
           "type": "string"
         },
-        "runTestsInIterm2.testRunners": {
+        "runTestsInIterm.testRunners": {
           "default": [],
           "markdownDescription": "Specify what command to use for a specific file suffix or language. Suffixes take precedence over languages.\n\nExample:\n\n```json\n[\n  {\n    \"language\": \"ruby\",\n    \"command\": \"rspec\"\n  },\n  {\n    \"suffix\": \"_test.rb\",\n    \"command\": \"ruby -Itest\"\n  }\n]\n```",
           "type": "array"

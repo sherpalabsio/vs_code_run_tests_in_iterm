@@ -1,17 +1,17 @@
 const vscode = require('vscode');
 const childProcess = require('child_process');
 
-class iTerm2 {
+class Iterm {
   static run(command) {
-    iTerm2.prepareScreen();
+    Iterm.prepareScreen();
 
-    const config = vscode.workspace.getConfiguration('runTestsInIterm2');
-    const activationScript = config.get('bringIterm2ForwardOnExecution')
+    const config = vscode.workspace.getConfiguration('runTestsInIterm');
+    const activationScript = config.get('bringItermForwardOnExecution')
       ? 'activate'
       : '';
 
     const appleScript = `
-      tell application "iTerm2"
+      tell application "iterm"
         ${activationScript}
 
         tell current session of current window
@@ -20,15 +20,15 @@ class iTerm2 {
       end tell
     `;
 
-    console.log(`Running in iTerm2: ${command}`);
+    console.log(`Running in iTerm: ${command}`);
 
     childProcess.exec(
       `osascript -e '${appleScript}'`,
       (error, _stdout, stderr) => {
         if (error) {
-          console.error(`Run test in iTerm2 failed: ${command}`, error, stderr);
+          console.error(`Run test in iTerm failed: ${command}`, error, stderr);
           vscode.window.showErrorMessage(
-            `Run tests in iTerm2 failed: ${error.message}`
+            `Run tests in iTerm failed: ${error.message}`
           );
           return;
         }
@@ -37,16 +37,16 @@ class iTerm2 {
   }
 
   static prepareScreen() {
-    const config = vscode.workspace.getConfiguration('runTestsInIterm2');
+    const config = vscode.workspace.getConfiguration('runTestsInIterm');
 
     if (
       config.get('openNewTab') &&
       !config.get('iUseTmux') &&
-      iTerm2.isCurrentSessionBusy()
+      Iterm.isCurrentSessionBusy()
     ) {
-      iTerm2.openNewTab();
+      Iterm.openNewTab();
     } else if (config.get('clearTheScreen')) {
-      iTerm2.clearTheScreen();
+      Iterm.clearTheScreen();
     }
   }
 
@@ -54,7 +54,7 @@ class iTerm2 {
     const shell = process.env.SHELL.split('/').pop();
 
     const appleScript = `
-        tell application "iTerm"
+        tell application "iterm"
           tell current session of current window
             get name
           end tell
@@ -73,7 +73,7 @@ class iTerm2 {
 
   static clearTheScreen() {
     const appleScript = `
-      tell application "iTerm"
+      tell application "iterm"
         tell current session of current window
           -- Clear the current prompt - Equivalent to Ctrl+U (delete line in Bash)
           write text (ASCII character 21) without newline
@@ -90,7 +90,7 @@ class iTerm2 {
 
   static openNewTab() {
     const appleScript = `
-        tell application "iTerm"
+        tell application "iterm"
           activate
 
           tell current window
@@ -104,4 +104,4 @@ class iTerm2 {
   }
 }
 
-module.exports = iTerm2;
+module.exports = Iterm;

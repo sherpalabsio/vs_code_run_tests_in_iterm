@@ -20,7 +20,7 @@ const defaultTestRunners = [
 ];
 
 function getExecutable(filePath, languageId) {
-  const config = vscode.workspace.getConfiguration('runTestsInIterm2');
+  const config = vscode.workspace.getConfiguration('runTestsInIterm');
   const userSpecifiedTestRunners = config.get('testRunners');
   const testRunners = userSpecifiedTestRunners.concat(defaultTestRunners);
 

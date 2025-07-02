@@ -13,7 +13,7 @@ install_locally:
 
 .PHONY: uninstall_locally
 uninstall_locally:
-	code --uninstall-extension undefined_publisher.run-tests-in-iterm2
+	code --uninstall-extension undefined_publisher.run-tests-in-iterm
 
 .PHONY: publish_login
 publish_login:

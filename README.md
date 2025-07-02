@@ -1,18 +1,18 @@
-# Run tests in iTerm2
+# Run tests in iterm
 
 # Feature highlights
 
 # Configuration
 
-## bringIterm2ForwardOnExecution
+## bringItermForwardOnExecution
 
 - Default: `true`
-- Description: Bring iTerm2 to the front when a test starts running.
+- Description: Bring iterm to the front when a test starts running.
 
 ## openNewTab
 
 - Default: `true`
-- Description: Run the tests in a new iTerm2 tab when the current iTerm2 session is running something e.g. an app server. This is not supported for tmux so make sure to set the `iUseTmux` correctly to avoid new tabs being constantly opened.
+- Description: Run the tests in a new iterm tab when the current iterm session is running something e.g. an app server. This is not supported for tmux so make sure to set the `iUseTmux` correctly to avoid new tabs being constantly opened.
 
 ## clearTheScreen
 
@@ -51,13 +51,13 @@
 ## Default configuration (settings.json)
 
 ```json
-"runTestsInIterm2.bringIterm2ForwardOnExecution": true,
-"runTestsInIterm2.openNewTab": true,
-"runTestsInIterm2.clearTheScreen": true,
-"runTestsInIterm2.iUseTmux": false,
+"runTestsInIterm.bringItermForwardOnExecution": true,
+"runTestsInIterm.openNewTab": true,
+"runTestsInIterm.clearTheScreen": true,
+"runTestsInIterm.iUseTmux": false,
 
-"runTestsInIterm2.defaultTestRunner": "make test",
-"runTestsInIterm2.testRunners": [
+"runTestsInIterm.defaultTestRunner": "make test",
+"runTestsInIterm.testRunners": [
   {
     "suffix": "_test.rb",
     "command": "rails test"
@@ -79,26 +79,26 @@
 
 # Available commands
 
-- run-tests-in-iterm2.runAll
-- run-tests-in-iterm2.runCurrentFile
-- run-tests-in-iterm2.runAtCursor
+- run-tests-in-iterm.runAll
+- run-tests-in-iterm.runCurrentFile
+- run-tests-in-iterm.runAtCursor
 
 # Recommended keybindings (keybindings.json)
 
 ```json
 {
   "key": "cmd+; cmd+a",
-  "command": "run-tests-in-iterm2.runAll",
+  "command": "run-tests-in-iterm.runAll",
   "when": "editorTextFocus"
 },
 {
   "key": "cmd+; cmd+f",
-  "command": "run-tests-in-iterm2.runCurrentFile",
+  "command": "run-tests-in-iterm.runCurrentFile",
   "when": "editorTextFocus"
 },
 {
   "key": "cmd+; cmd+l",
-  "command": "run-tests-in-iterm2.runAtCursor",
+  "command": "run-tests-in-iterm.runAtCursor",
   "when": "editorTextFocus"
 }
 ```

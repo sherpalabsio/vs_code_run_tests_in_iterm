@@ -79,7 +79,7 @@ class Iterm {
           write text (ASCII character 21) without newline
 
           -- Clear the screen and the scrollback buffer
-          write text "clear && printf \\"\\\\e[3J\\""
+          write text " clear && printf \\"\\\\e[3J\\""
           delay 0.1
         end tell
       end tell

@@ -1,7 +1,7 @@
 {
   "name": "run-tests-in-iterm",
-  "displayName": "Run tests in iterm",
-  "description": "Run a single or multiple tests directly in iterm with the press of a button.",
+  "displayName": "Run tests in iTerm",
+  "description": "Run a single or multiple tests directly in iTerm with the press of a button.",
   "publisher": "sherpalabsio",
   "version": "0.0.1",
   "author": {

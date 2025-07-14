@@ -1,6 +1,15 @@
 # Run tests in iterm
 
-# Feature highlights
+![demo](https://github.com/user-attachments/assets/48b44567-69b9-4138-9c9e-af20b30c8cbb)
+
+# Features
+
+- It opens a new tab if the current iTerm2 session is running something e.g. an app server.
+  - Not supported for tmux.
+  - It requires Settings > Profiles > General > Title > Job to be selected.
+- It clears the screen before running a test.
+- It clears the prompt before running a test.
+  - So you don't have to worry about that you run something else by mistake.
 
 # Configuration
 
@@ -36,7 +45,7 @@
 ### Example
 
 ```json
-"testRunners": [
+"runTestsInIterm.testRunners": [
   {
     "language": "ruby",
     "command": "rails test"

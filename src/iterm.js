@@ -65,8 +65,10 @@ class Iterm {
       .execSync(`osascript -e '${appleScript}'`)
       .toString()
       .trim();
+
     return (
       !currentSessionTitle.endsWith(`(-${shell})`) &&
+      !currentSessionTitle.endsWith(`(${shell})`) &&
       currentSessionTitle != `-${shell}`
     );
   }

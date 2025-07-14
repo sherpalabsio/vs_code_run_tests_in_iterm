@@ -21,7 +21,7 @@ const defaultTestRunners = [
 
 function getExecutable(filePath, languageId) {
   const config = vscode.workspace.getConfiguration('runTestsInIterm');
-  const userSpecifiedTestRunners = config.get('testRunners');
+  const userSpecifiedTestRunners = config.testRunners;
   const testRunners = userSpecifiedTestRunners.concat(defaultTestRunners);
 
   // Check file endings
